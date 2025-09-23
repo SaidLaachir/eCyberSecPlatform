@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --cyber-teal: #1A7981;
+  --cyber-neutral: #E3E3E3;
+  --cyber-black: #000000;
+}
+
+/* Map to Tailwind colors above by adding classes via tailwind config. */
