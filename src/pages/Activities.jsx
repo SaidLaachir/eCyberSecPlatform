@@ -104,7 +104,7 @@ export default function Activities() {
             <a href="https://www.instagram.com/e_cybersec_club/" target="_blank" rel="noreferrer" className="px-4 py-2 rounded text-black border border-gray-400 transition-all duration-300 transform hover:scale-105 hover:bg-[#E4405F] hover:text-white">Instagram</a>
             <a href="https://www.linkedin.com/company/akira-club/posts/?feedView=all" target="_blank" rel="noreferrer" className="px-4 py-2 rounded text-black border border-gray-400 transition-all duration-300 transform hover:scale-105 hover:bg-[#0077B5] hover:text-white">LinkedIn</a>
             <a href="#" className="px-4 py-2 rounded text-black border border-gray-400 transition-all duration-300 transform hover:scale-105 hover:bg-[#5865F2] hover:text-white">Discord</a>
-            <a href="#" className="px-4 py-2 rounded text-black border border-gray-400 transition-all duration-300 transform hover:scale-105 hover:bg-[#25D366] hover:text-white">WhatsApp</a>
+            <a href="https://chat.whatsapp.com/DBc4WdUPcVnI2z0iHGRZPC?mode=ems_wa_c" className="px-4 py-2 rounded text-black border border-gray-400 transition-all duration-300 transform hover:scale-105 hover:bg-[#25D366] hover:text-white">WhatsApp</a>
           </div>
         </div>
       </section>
