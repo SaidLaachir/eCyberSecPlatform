@@ -22,7 +22,7 @@ const members = [
     id: 2,
     name: "yahya",
     role: "Vice President",
-    image: yahya,
+    image: unknown,
     linkedin: "https://linkedin.com/in/example2",
     bio: "Yahya  is the vice president of the club, ready to fill the gaps."
   },
