@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import members from "../data/members";
 import MemberCard from "../components/MemberCard";
-import clubIcon from "../assets/clubicondark.png";
 import PageWrapper from "../components/PageWrapper";
 
 export default function Members() {
@@ -13,19 +12,7 @@ export default function Members() {
 
   return (
     <PageWrapper>
-      <section
-        className="relative py-10"
-        style={{
-          backgroundImage: `url(${clubIcon})`,
-          backgroundSize: "300px",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          opacity: "0.95",
-        }}
-      >
-        {/* Overlay for transparency */}
-        <div className="absolute inset-0 bg-white opacity-75"></div>
-
+      <section className="pt-28 space-y-12">
         <div className="relative z-10">
           <h2 className="text-3xl font-bold mb-4 text-center text-cyberBlack">
             Members — Bureau

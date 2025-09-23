@@ -21,58 +21,74 @@ const members = [
   {
     id: 2,
     name: "yahya",
-    role: "Design",
+    role: "Vice President",
     image: yahya,
     linkedin: "https://linkedin.com/in/example2",
-    bio: "Yahya  is one of the desiging, editing and ceritfications group"
+    bio: "Yahya  is the vice president of the club, ready to fill the gaps."
   },
   {
     id: 3,
     name: "Abdellatif",
-    role: "Design",
+    role: "Administration",
     image: abdellatif,
     linkedin: "https://linkedin.com/in/example3",
-    bio: "Abdellatif is one of the desiging, editing and ceritfications group"
+    bio: "Abdellatif orchests the whole team's movement."
   },
   {
     id: 4,
     name: "Said",
-    role: "Sponsor manager",
+    role: "Sponsoring Manager",
     image: said,
     linkedin: "https://linkedin.com/in/example3",
-    bio: "Sais is the sponsoring files manager of the club"
+    bio: "He has one job, to find an investor (Someone to pay for us 😏)"
   },
   {
     id: 5,
     name: "Oussama",
-    role: "Money manager",
+    role: "HR Manager",
     image: oussama,
     linkedin: "https://linkedin.com/in/example3",
-    bio: "Oussama is the money manager of the club"
+    bio: "Oussama is the key for good team work and cooperation intenraly."
   },
   {
     id: 6,
     name: "Fatimazohra",
-    role: "Administration",
+    role: "Communication Manager",
     image: fati,
     linkedin: "https://linkedin.com/in/example3",
-    bio: "Fatimazohra is the administration coordinator"
+    bio: "Fatimazohra is here to speak in behalf of the whole team member in big events and ceremonies and represents the club."
   },
   {
     id: 7,
     name: "Anass",
-    role: "Community Manager",
+    role: "Project Manager",
     image: unknown,
     linkedin: "https://linkedin.com/in/example3",
-    bio: "Anass is the community manager"
+    bio: "We need somebody to deal with Projects palanings and work path, this is Anass "
   },
   {
     id: 8,
     name: "Hafsa",
-    role: "Media manager",
+    role: "Treasurer",
     image: unknown,
     linkedin: "https://linkedin.com/in/example3",
-    bio: "Hafsa is media manager"
+    bio: "The Money keeper of the club. without her we're broke hahaha."
+  },
+  {
+    id: 9,
+    name: "Mouhssine",
+    role: "Events Manager",
+    image: unknown,
+    linkedin: "https://linkedin.com/in/example3",
+    bio: "He is here to do his job, manage and coordinate work for the good of the club."
+  },
+  {
+    id: 10,
+    name: "Walid",
+    role: "Media Manager",
+    image: unknown,
+    linkedin: "https://linkedin.com/in/example3",
+    bio: "All his time is on social media _ The media sniffer_ and the one who posts our important tweets."
   }
 ];
 

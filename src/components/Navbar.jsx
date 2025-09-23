@@ -1,12 +1,13 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 import clubIcon from "../assets/clubicon.png";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/members", label: "Members" },
   { to: "/annual-plan", label: "Annual Plan" },
-  { to: "/activities", label: "Activities" }
+  { to: "/activities", label: "Activities" },
 ];
 
 export default function Navbar() {
@@ -24,7 +25,6 @@ export default function Navbar() {
             src={clubIcon}
             alt="Club Logo"
             className="w-16 h-16 object-cover shadow-md drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]"
-            style={{ backgroundColor: "transparent" }} // transparent frame
           />
           <div>
             <div className="font-extrabold text-2xl text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.95)]">
@@ -36,23 +36,22 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Centered Menu Links */}
-<div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center gap-10 text-lg font-semibold z-10">
-  {links.map((l) => (
-    <Link
-      key={l.to}
-      to={l.to}
-      className={`transition-all duration-300 ease-in-out hover:scale-110 hover:text-cyan-200 hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.8)] ${
-        loc.pathname === l.to
-          ? "text-cyan-300 font-bold"
-          : "text-white"
-      }`}
-    >
-      {l.label}
-    </Link>
-  ))}
-</div>
-
+        {/* Centered Menu Links (Desktop) */}
+        <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center gap-10 text-lg font-semibold z-10">
+          {links.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className={`transition-all duration-300 ease-in-out hover:scale-110 hover:text-cyan-200 hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.8)] ${
+                loc.pathname === l.to
+                  ? "text-cyan-300 font-bold"
+                  : "text-white"
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
 
         {/* Mobile Menu */}
         <div className="ml-auto md:hidden z-20">
@@ -65,31 +64,50 @@ export default function Navbar() {
 
 function MobileMenu({ links }) {
   const [open, setOpen] = React.useState(false);
+  const loc = useLocation();
 
   return (
-    <div className="relative">
-      <button onClick={() => setOpen((s) => !s)} className="p-2">
-        <svg
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          className="stroke-white drop-shadow-[0_0_4px_rgba(255,255,255,0.9)]"
-        >
-          <path d="M4 6h16M4 12h16M4 18h16" strokeWidth="2" strokeLinecap="round" />
-        </svg>
+    <>
+      {/* Toggle button */}
+      <button onClick={() => setOpen((s) => !s)} className="p-2 z-50 relative">
+        {open ? (
+          <FaTimes size={28} className="text-white transition-transform duration-300 rotate-90" />
+        ) : (
+          <FaBars size={28} className="text-white transition-transform duration-300" />
+        )}
       </button>
-      {open && (
-        <div className="absolute right-0 mt-2 bg-white text-black rounded shadow p-4 w-44 z-40">
+
+      {/* Fullscreen overlay */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
+          open ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setOpen(false)}
+      ></div>
+
+      {/* Side drawer */}
+      <div
+        className={`fixed top-0 right-0 h-full w-3/4 max-w-xs bg-blue-950 shadow-2xl transform transition-transform duration-500 ease-in-out ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-semibold">
           {links.map((l) => (
-            <div key={l.to} className="py-2 border-b last:border-b-0">
-              <Link to={l.to} onClick={() => setOpen(false)} className="font-medium">
+            <Link
+              key={l.to}
+              to={l.to}
+              onClick={() => setOpen(false)}
+              className={`relative transition-all duration-300 hover:text-cyan-300 ${
+                loc.pathname === l.to ? "text-cyan-300" : "text-white"
+              }`}
+            >
+              <span className="relative inline-block after:block after:h-[2px] after:w-0 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">
                 {l.label}
-              </Link>
-            </div>
+              </span>
+            </Link>
           ))}
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
