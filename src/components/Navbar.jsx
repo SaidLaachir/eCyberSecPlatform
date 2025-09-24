@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import clubIcon from "../assets/clubicon.png";
@@ -6,13 +6,35 @@ import clubIcon from "../assets/clubicon.png";
 const links = [
   { to: "/", label: "Home" },
   { to: "/members", label: "Members" },
-  { to: "/annual-plan", label: "Annual Plan" },
-  { to: "/activities", label: "Activities" },
-  { to: "/writeups", label: "Write-ups" }, // ✅ New page link
+  { to: "/annual-plan", label: "Annual Plan", key: "annualPlan" },
+  { to: "/activities", label: "Activities", key: "activities" },
+  { to: "/writeups", label: "Write-ups", key: "writeups" },
 ];
 
 export default function Navbar() {
   const loc = useLocation();
+  const [notifications, setNotifications] = useState({});
+
+  // Load notifications from localStorage
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("notifications") || "{}");
+    setNotifications(stored);
+  }, []);
+
+  // Helper: check if notification is active (<48h)
+  const hasNotification = (key) => {
+    if (!key || !notifications[key]) return false;
+    return new Date() - new Date(notifications[key]) < 48 * 60 * 60 * 1000;
+  };
+
+  // Remove notification when clicked
+  const handleClick = (key) => {
+    if (!key) return;
+    const updated = { ...notifications };
+    delete updated[key];
+    setNotifications(updated);
+    localStorage.setItem("notifications", JSON.stringify(updated));
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-blue-950 text-white shadow-xl z-50 h-24">
@@ -43,29 +65,37 @@ export default function Navbar() {
             <Link
               key={l.to}
               to={l.to}
-              className={`transition-all duration-300 ease-in-out hover:scale-110 hover:text-cyan-200 hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.8)] ${
-                loc.pathname === l.to
-                  ? "text-cyan-300 font-bold"
-                  : "text-white"
+              onClick={() => handleClick(l.key)}
+              className={`relative transition-all duration-300 ease-in-out hover:scale-110 hover:text-cyan-200 hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.8)] ${
+                loc.pathname === l.to ? "text-cyan-300 font-bold" : "text-white"
               }`}
             >
               {l.label}
+              {/* Notification dot */}
+              {hasNotification(l.key) && (
+                <span className="absolute -top-1 -right-3 w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+              )}
             </Link>
           ))}
         </div>
 
         {/* Mobile Menu */}
         <div className="ml-auto md:hidden z-20">
-          <MobileMenu links={links} />
+          <MobileMenu links={links} notifications={notifications} handleClick={handleClick} />
         </div>
       </div>
     </nav>
   );
 }
 
-function MobileMenu({ links }) {
+function MobileMenu({ links, notifications, handleClick }) {
   const [open, setOpen] = React.useState(false);
   const loc = useLocation();
+
+  const hasNotification = (key) => {
+    if (!key || !notifications[key]) return false;
+    return new Date() - new Date(notifications[key]) < 48 * 60 * 60 * 1000;
+  };
 
   return (
     <>
@@ -97,14 +127,18 @@ function MobileMenu({ links }) {
             <Link
               key={l.to}
               to={l.to}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                handleClick(l.key);
+              }}
               className={`relative transition-all duration-300 hover:text-cyan-300 ${
                 loc.pathname === l.to ? "text-cyan-300" : "text-white"
               }`}
             >
-              <span className="relative inline-block after:block after:h-[2px] after:w-0 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">
-                {l.label}
-              </span>
+              {l.label}
+              {hasNotification(l.key) && (
+                <span className="absolute -top-1 -right-3 w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+              )}
             </Link>
           ))}
         </div>

@@ -28,6 +28,15 @@ export default function Activities() {
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % galleryImages.length);
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
 
+  // Notification logic: set a timestamp for activities if not already present
+  useEffect(() => {
+    const notifications = JSON.parse(localStorage.getItem("notifications") || "{}");
+    if (!notifications.activities) {
+      notifications.activities = new Date().toISOString();
+      localStorage.setItem("notifications", JSON.stringify(notifications));
+    }
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
@@ -41,7 +50,7 @@ export default function Activities() {
     <PageWrapper>
       <section className="pt-28 space-y-12 relative z-10">
 
-        {/* Club Header - unified alignment */}
+        {/* Club Header */}
         <header className="flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
           <img
             src={clubPic2}
@@ -67,7 +76,7 @@ export default function Activities() {
           </p>
         </div>
 
-        {/* Activity Cards - grid layout */}
+        {/* Activity Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {activities.map((a) => (
             <ActivityCard
@@ -78,6 +87,27 @@ export default function Activities() {
               onDetailsClick={() => handleDetails(a.id)}
             />
           ))}
+        </div>
+
+        {/* Google Form Subscription */}
+        <div className="mt-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-center mb-4">
+            Subscribe for New Club Members (2025-2026)
+          </h3>
+          <div className="flex justify-center">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSe1buL0nv_ulI1a_nP434H4gtskA0FEqk1AvsSmXpApl4pBSg/viewform?embedded=true"
+              width="640"
+              height="800"
+              frameBorder="0"
+              marginHeight="0"
+              marginWidth="0"
+              className="w-full max-w-2xl rounded-lg shadow-lg"
+              title="Club Subscription Form"
+            >
+              Loading…
+            </iframe>
+          </div>
         </div>
 
         {/* Gallery */}
@@ -100,7 +130,6 @@ export default function Activities() {
               />
             </AnimatePresence>
 
-            {/* Left & Right Controls */}
             <button
               onClick={prevSlide}
               className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition"
