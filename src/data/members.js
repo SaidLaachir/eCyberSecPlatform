@@ -15,7 +15,7 @@ const members = [
     name: "Rachid",
     role: "President",
     image: rachid, // replace
-    linkedin: "https://linkedin.com/in/example1",
+    linkedin: "https://www.linkedin.com/in/rachid-el-magroua-619189304/",
     bio: "Rachid is the head chief of our club member."
   },
   {
@@ -31,15 +31,15 @@ const members = [
     name: "Abdellatif",
     role: "Administration",
     image: abdellatif,
-    linkedin: "https://linkedin.com/in/example3",
-    bio: "Abdellatif orchests the whole team's movement."
+    linkedin: "https://www.linkedin.com/in/abdellatif-tazarni-61691a24a/",
+    bio: "Abdellatif orchests the whole team's movements."
   },
   {
     id: 4,
     name: "Said",
     role: "Sponsoring Manager",
     image: said,
-    linkedin: "https://linkedin.com/in/example3",
+    linkedin: "https://www.linkedin.com/in/said-l-649581225/",
     bio: "He has one job, to find an investor (Someone to pay for us 😏)"
   },
   {
@@ -47,16 +47,16 @@ const members = [
     name: "Oussama",
     role: "HR Manager",
     image: oussama,
-    linkedin: "https://linkedin.com/in/example3",
-    bio: "Oussama is the key for good team work and cooperation intenraly."
+    linkedin: "https://www.linkedin.com/in/oussama-hajjoubi-089a66214/",
+    bio: "Oussama is the key for good team work and cooperation between our people."
   },
   {
     id: 6,
-    name: "Fatimazohra",
+    name: "Fatima Ezzahra",
     role: "Communication Manager",
     image: fati,
-    linkedin: "https://linkedin.com/in/example3",
-    bio: "Fatimazohra is here to speak in behalf of the whole team member in big events and ceremonies and represents the club."
+    linkedin: "http://www.linkedin.com/in/fatima-ezzahra-el-menyar-b77a18283",
+    bio: "Fatimazohra is here to speak on behalf of the whole team members in big events and ceremonies and represents the club."
   },
   {
     id: 7,
@@ -64,7 +64,7 @@ const members = [
     role: "Project Manager",
     image: unknown,
     linkedin: "https://linkedin.com/in/example3",
-    bio: "We need somebody to deal with Projects palanings and work path, this is Anass "
+    bio: "We need somebody to deal with Projects palanings and roadmaps, this is Anass "
   },
   {
     id: 8,

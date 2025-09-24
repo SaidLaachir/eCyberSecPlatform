@@ -1,4 +1,3 @@
-// src/pages/Activities.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PageWrapper from "../components/PageWrapper";
@@ -12,11 +11,12 @@ import pic2 from "../assets/pic2.jpg";
 import pic3 from "../assets/pic3.jpg";
 import pic4 from "../assets/pic4.jpg";
 import pic5 from "../assets/pic5.jpeg";
+import clubPic2 from "../assets/clubicondark.png";
 
 const activities = [
-  { id: 1, title: "Hacking Workshop 2025", date: "2025-10-10", venue: "ENIAD Lab A", images: [pic1, pic2], description: "Introductory web hacking workshop." },
-  { id: 2, title: "Web Hacking session 2025", date: "2025-11-02", venue: "Main Auditorium", images: [pic3], description: "Advanced web security techniques." },
-  { id: 3, title: "Cybersecurity Hackathon", date: "2025-11-15", venue: "Lab B", images: [pic4, pic5], description: "Hackathon with teams competing for prizes." },
+  { id: 1, title: "Hacking Workshop 2025", date: "2025-10-10", venue: "ENIAD Lab A", images: [pic1, pic2] },
+  { id: 2, title: "Web Hacking session 2025", date: "2025-11-02", venue: "Main Auditorium", images: [pic3] },
+  { id: 3, title: "Cybersecurity Hackathon", date: "2025-11-15", venue: "Lab B", images: [pic4, pic5] },
 ];
 
 const galleryImages = [pic1, pic2, pic3, pic4, pic5];
@@ -40,6 +40,25 @@ export default function Activities() {
   return (
     <PageWrapper>
       <section className="pt-28 space-y-12 relative z-10">
+
+        {/* Club Header - unified alignment */}
+        <header className="flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
+          <img
+            src={clubPic2}
+            alt="Club Icon"
+            className="w-16 h-16 object-cover shadow-md drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]"
+            style={{ backgroundColor: "transparent" }}
+          />
+          <div>
+            <h1 className="text-3xl font-bold text-cyberBlack">
+              eCyberSec Club — ENIAD
+            </h1>
+            <p className="text-base text-gray-700">
+              Building practical cybersecurity skills, ethically and collaboratively.
+            </p>
+          </div>
+        </header>
+
         {/* Activities Header */}
         <div>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Activities</h2>
@@ -48,8 +67,8 @@ export default function Activities() {
           </p>
         </div>
 
-        {/* Activity Cards */}
-        <div className="space-y-4">
+        {/* Activity Cards - grid layout */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {activities.map((a) => (
             <ActivityCard
               key={a.id}

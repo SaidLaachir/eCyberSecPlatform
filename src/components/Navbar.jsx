@@ -8,6 +8,7 @@ const links = [
   { to: "/members", label: "Members" },
   { to: "/annual-plan", label: "Annual Plan" },
   { to: "/activities", label: "Activities" },
+  { to: "/writeups", label: "Write-ups" }, // ✅ New page link
 ];
 
 export default function Navbar() {

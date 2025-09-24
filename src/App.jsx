@@ -8,6 +8,8 @@ import AnnualPlan from "./pages/AnnualPlan";
 import Activities from "./pages/Activities";
 import ScrollToTop from "./components/ScrollToTop";
 import BackgroundLogo from "./components/BackgroundLogo";
+import Writeups from "./pages/Writeups";
+
 
 export default function App(){
   return (
@@ -22,6 +24,7 @@ export default function App(){
           <Route path="/members" element={<Members />} />
           <Route path="/annual-plan" element={<AnnualPlan />} />
           <Route path="/activities" element={<Activities />} />
+          <Route path="/writeups" element={<Writeups />} />
         </Routes>
       </main>
       <Footer />
