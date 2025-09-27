@@ -6,6 +6,7 @@ import said from "../assets/said.png";
 import oussama from "../assets/oussama.png";
 import fati from "../assets/fati.png";
 import unknown from "../assets/unknown.jpg";
+import anas from "../assets/anas.png";
 
 
 // sample members data -- replace pictures/links with real ones
@@ -62,7 +63,7 @@ const members = [
     id: 7,
     name: "Anass",
     role: "Project Manager",
-    image: unknown,
+    image: anas,
     linkedin: "https://linkedin.com/in/example3",
     bio: "We need somebody to deal with Projects palanings and roadmaps, this is Anass "
   },

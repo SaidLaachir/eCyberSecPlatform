@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Gallery images
-import pic1 from "../assets/pic1.jpg";
+import pic1 from "../assets/clubpic.jpg";
 import pic2 from "../assets/pic2.jpg";
 import pic3 from "../assets/pic3.jpg";
 import pic4 from "../assets/pic4.jpg";
